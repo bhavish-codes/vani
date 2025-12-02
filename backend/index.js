@@ -16,7 +16,17 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/ping',(req,res)=>{
-    res.send('pong')
+    const connectionState = mongoose.connection.readyState;
+    const status =
+        connectionState === 1
+            ? 'Connected'
+            : connectionState === 2
+            ? 'Connecting'
+            : connectionState === 3
+            ? 'Disconnecting'
+            : 'Disconnected';
+
+    res.json({ status });
 })
 
 app.use('/auth',router)
