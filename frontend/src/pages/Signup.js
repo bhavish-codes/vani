@@ -27,7 +27,7 @@ function Signup() {
 
         try {
             console.log('📡 Sending signup request to backend...');
-            const response = await fetch('http://localhost:8080/auth/signup', {
+            const response = await fetch('https://vani-sand.vercel.app/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
