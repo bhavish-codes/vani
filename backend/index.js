@@ -11,19 +11,8 @@ const router = require('./src/routes/AuthRoutes')
 require('./src/modles/db')
 
 // Validate environment variables
-console.log('=== Environment Variables Check ===');
-console.log('PORT:', PORT);
-console.log('MONGO_CONN:', process.env.MONGO_CONN ? 'Set ✓' : 'NOT SET ✗');
-console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set ✓' : 'NOT SET ✗');
-
-if (!process.env.MONGO_CONN) {
-    console.error('ERROR: MONGO_CONN environment variable is not set!');
-    console.error('Please set MONGO_CONN in your environment variables or .env file');
-}
-
-if (!process.env.JWT_SECRET) {
-    console.error('ERROR: JWT_SECRET environment variable is not set!');
-    console.error('Please set JWT_SECRET in your environment variables or .env file');
+if (!process.env.MONGO_CONN || !process.env.JWT_SECRET) {
+    console.warn('Warning: Required environment variables MONGO_CONN or JWT_SECRET are missing');
 }
 
 // Enable CORS first
@@ -43,7 +32,7 @@ app.get('/ping',(req,res)=>{
             ? 'Disconnecting'
             : 'Disconnected';
 
-    console.log('[PING] Database status:', status);
+    console.log('Database status check:', status);
     res.json({ 
         status,
         mongoConnConfigured: !!process.env.MONGO_CONN,
@@ -61,6 +50,5 @@ app.use('/auth',router)
 
 
 app.listen(PORT , ()=>{
-    console.log(`Server is running on port ${PORT}`);
-    console.log('Server URL: http://localhost:' + PORT);
+    console.log(`Server running on port ${PORT}`);
 })

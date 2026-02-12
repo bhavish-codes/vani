@@ -17,7 +17,7 @@ function Home() {
     const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
 
-    // Placeholder states - ready for integration
+    // State for tracking hand sign detection
     const [fingerCount, setFingerCount] = useState(0);
     const [isActive, setIsActive] = useState(false);
     const [stats, setStats] = useState({
@@ -27,12 +27,12 @@ function Home() {
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
-        console.log('🏠 Home component mounted');
+        console.log('Home component mounted');
         const userData = localStorage.getItem('user');
         
         if (userData) {
             const parsedUser = JSON.parse(userData);
-            console.log('✅ User data loaded:', parsedUser);
+            console.log('User data loaded:', parsedUser);
             setUser(parsedUser);
         }
     }, []);
@@ -64,20 +64,20 @@ function Home() {
     }, []);
 
     const handleLogout = () => {
-        console.log('🚪 Logout initiated');
+        console.log('Logout initiated');
         try {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            console.log('🗑️ Cleared token and user data from localStorage');
+            console.log('Cleared token and user data');
             
             toast.success('Logged out successfully');
-            console.log('✅ Logout successful');
+            console.log('Logout successful');
             
             setTimeout(() => {
                 navigate('/login', { replace: true });
             }, 500);
         } catch (error) {
-            console.error('🔥 Logout error:', error);
+            console.error('Logout error:', error);
             toast.error('Error during logout');
             navigate('/login', { replace: true });
         }
@@ -201,7 +201,7 @@ function Home() {
                     </div>
                     
                     <p className="app-subtitle" style={{ margin: 0, flex: 1, textAlign: 'center' }}>
-                        Real-time hand tracking with AI
+                        Real-time hand tracking
                     </p>
                     
                     {/* Profile Button with Dropdown */}

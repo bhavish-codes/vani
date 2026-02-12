@@ -21,28 +21,26 @@ function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('🚀 Signup form submitted');
-        console.log('📝 Form data:', formData);
+        console.log('Signup form submitted');
+        console.log('Form data:', formData);
         setLoading(true);
 
+        const url = `https://vani-sand.vercel.app/auth/signup`;
         try {
-            console.log('📡 Sending signup request to backend...');
-            const response = await fetch('https://vani-sand.vercel.app/auth/signup', {
-                method: 'POST',
+            const response = await fetch(url, {
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
 
-            console.log('📥 Response status:', response.status);
-            const data = await response.json();
-            console.log('📦 Response data:', data);
+            const result = await response.json();
 
-            if (response.ok && data.success) {
-                console.log('✅ Signup successful!');
-                toast.success(data.message || 'Signup successful!');
-                console.log('🔄 Redirecting to login in 1.5s...');
+            if (response.ok && result.success) {
+                console.log('Signup successful');
+                toast.success(result.message || 'Signup successful!');
+                console.log('Redirecting to login in 1.5s...');
                 setTimeout(() => {
                     navigate('/login');
                 }, 1500);

@@ -20,12 +20,12 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('🚀 Login form submitted');
-        console.log('📝 Form data:', { email: formData.email, password: '***' });
+        console.log('Login form submitted');
+        console.log('Form data:', { email: formData.email, password: '***' });
         setLoading(true);
 
         try {
-            console.log('📡 Sending login request to backend...');
+            console.log('Sending login request to backend...');
             const response = await fetch('https://vani-sand.vercel.app/auth/login', {
                 method: 'POST',
                 headers: {
@@ -34,33 +34,33 @@ function Login() {
                 body: JSON.stringify(formData)
             });
 
-            console.log('📥 Response status:', response.status);
+            console.log('Response status:', response.status);
             const data = await response.json();
-            console.log('📦 Response data:', { ...data, token: data.token ? '***' : undefined });
+            console.log('Response data received');
 
             if (response.ok && data.success) {
-                console.log('✅ Login successful!');
+                console.log('Login successful');
                 
                 // Store token and user info
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                console.log('💾 Token and user data saved to localStorage');
+                console.log('Token and user data saved');
                 
                 toast.success(data.message || 'Login successful!');
-                console.log('🔄 Redirecting to home in 1s...');
+                console.log('Redirecting to home in 1s...');
                 setTimeout(() => {
                     navigate('/home');
                 }, 1000);
             } else {
-                console.log('❌ Login failed:', data.message);
+                console.log('Login failed:', data.message);
                 toast.error(data.message || 'Login failed');
             }
         } catch (error) {
-            console.error('🔥 Login error:', error);
+            console.error('Login error:', error);
             toast.error('Network error. Please try again.');
         } finally {
             setLoading(false);
-            console.log('🏁 Login process completed');
+            console.log('Login process completed');
         }
     };
 
