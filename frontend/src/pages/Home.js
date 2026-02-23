@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; //
 import './Home.css';
-import { Hand, Camera as CameraIcon, Activity, TrendingUp, LogOut, User } from "lucide-react";
+import { Hand, Camera as CameraIcon, Activity, TrendingUp, LogOut } from "lucide-react";
 import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import { Camera } from '@mediapipe/camera_utils';

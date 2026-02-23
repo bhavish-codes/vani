@@ -45,8 +45,8 @@ function Signup() {
                     navigate('/login');
                 }, 1500);
             } else {
-                console.log('❌ Signup failed:', data.message);
-                toast.error(data.message || 'Signup failed');
+                console.log('❌ Signup failed:', result.message);
+                toast.error(result.message || 'Signup failed');
             }
         } catch (error) {
             console.error('🔥 Signup error:', error);
@@ -84,7 +84,6 @@ function Signup() {
                         <input
                             type="email"
                             id="email"
-                            autoFocus
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
@@ -99,7 +98,6 @@ function Signup() {
                             type="password"
                             id="password"
                             name="password"
-                            autoFocus
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Enter your password"
