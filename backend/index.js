@@ -1,5 +1,5 @@
-const express=require('express');
-const mongoose = require('mongoose');
+const express=require('express');//used to create server and handle routes
+const mongoose = require('mongoose');//used to connect to MongoDB and define schemas/models
 const app=express();
 
 require('dotenv').config();

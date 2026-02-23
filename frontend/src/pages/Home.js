@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'; //
 import './Home.css';
 import { Hand, Camera as CameraIcon, Activity, TrendingUp, LogOut, User } from "lucide-react";
 import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
