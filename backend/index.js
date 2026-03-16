@@ -16,7 +16,9 @@ if (!process.env.MONGO_CONN || !process.env.JWT_SECRET) {
 }
 
 // Enable CORS first
-app.use(cors())
+app.use(cors({
+  origin: "https://vani-app.vercel.app"
+}))
 
 // Then parse JSON
 app.use(express.json())
