@@ -4,5 +4,5 @@ const { signupValidation, loginValidation } = require('../middleware/Authvalidat
 
 const router = require('express').Router();
 router.post('/login',loginValidation,login)
-router.post('/signup',signup)
+router.post('/signup',signupValidation,signup)
 module.exports=router;
