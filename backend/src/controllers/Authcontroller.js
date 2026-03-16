@@ -49,7 +49,7 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        console.log('Login attempt for:', email);
+        const { email, password } = req.body;
         
         // Check if JWT_SECRET is configured
         if (!process.env.JWT_SECRET) {
