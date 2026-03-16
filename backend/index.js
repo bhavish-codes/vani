@@ -3,7 +3,7 @@ const mongoose = require('mongoose');//used to connect to MongoDB and define sch
 const app=express();
 
 require('dotenv').config();
-const PORT =process.env.PORT || 8080
+
 
 const cors=require('cors')
 const router = require('./src/routes/AuthRoutes')
@@ -41,14 +41,10 @@ app.get('/ping',(req,res)=>{
 })
 
 app.use('/auth',router)
+module.exports = app;
 
 
 
 
 
 
-
-
-app.listen(PORT , ()=>{
-    console.log(`Server running on port ${PORT}`);
-})
